@@ -1,6 +1,6 @@
-# Prashanth Veluv — Portfolio
+# Prashanth Velu V — Portfolio
 
-Personal portfolio for **Prashanth Veluv**, Digital Marketing & Business Analytics professional based in Coimbatore, India.
+Personal portfolio for **Prashanth Velu V**, Digital Marketing & Business Analytics professional based in Coimbatore, India.
 
 It is a single-page, editorial-style site. The visual identity comes from the printed resume: grey, charcoal and white, thin rules, serif headings and a circular portrait. It covers About, Expertise, Experience, Selected Projects, Education, the engineering-to-digital journey, and Contact.
 
@@ -46,7 +46,7 @@ Copy `.env.example` to `.env`, or set these in your hosting dashboard.
 
 | Variable | Required | Purpose |
 | --- | --- | --- |
-| `VITE_SITE_URL` | Recommended | Production URL without a trailing slash. Used for canonical, `og:url`, `og:image`, JSON-LD, robots.txt and sitemap.xml. It defaults to `https://prashanth-veluv.vercel.app`, so **set it to the real domain**. |
+| `VITE_SITE_URL` | Recommended | Production URL without a trailing slash. Used for canonical, `og:url`, `og:image`, JSON-LD, robots.txt and sitemap.xml. It defaults to `https://prashanth-velu-v.vercel.app`, so **set it to the real domain**. |
 | `VITE_CONTACT_ENDPOINT` | Optional | A URL that accepts a JSON `POST` of `{ name, email, message }`, such as Formspree or your own Express route. When set, the form sends messages and shows sending, sent and error states. When unset, the form opens the visitor's email app with the message drafted, and it never claims a message was sent. |
 
 ## Deployment
@@ -86,7 +86,7 @@ The Person JSON-LD and meta tags live in `index.html`. Update them there if the 
 | File | Notes |
 | --- | --- |
 | `public/profile.jpg`, `profile.webp`, `profile.avif`, `profile-480.*` | Square portrait (800×800 and 480×480) cropped from the original photo. To replace it, export a square crop under the same file names. A source photo at least 800 px wide keeps it sharp. |
-| `public/Prashanth-Veluv-Resume.pdf` | Single-page PDF generated from the resume image. Replace it with the original PDF if one exists. |
+| `public/Prashanth-Velu-V-Resume.pdf` | Single-page PDF generated from the resume image. Replace it with the original PDF if one exists. |
 | `public/og-image.png` (1200×630), `public/apple-touch-icon.png` (180×180) | Rendered from `scripts/og-image.html`. Run `npm run dev`, open `/scripts/og-image.html`, and screenshot `#og` and `#icon`. |
 | `public/favicon.svg` | Monochrome "PV" mark. |
 

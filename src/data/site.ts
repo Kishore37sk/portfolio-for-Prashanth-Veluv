@@ -1,9 +1,9 @@
 import type { NavItem } from '../types'
 
 export const site = {
-  name: 'Prashanth Veluv',
+  name: 'Prashanth Velu V',
   firstName: 'Prashanth',
-  lastName: 'Veluv',
+  lastName: 'Velu V',
   initials: 'PV',
   jobTitle: 'Digital Marketing & Business Analytics Professional',
   roles: ['Digital Marketing', 'Business Analyst', 'Marketing Research', 'GTM Automation'],
@@ -13,7 +13,7 @@ export const site = {
   email: 'prashanthvelu0409@gmail.com',
   phoneDisplay: '+91 94869 72766',
   phoneHref: 'tel:+919486972766',
-  resumePath: '/Prashanth-Veluv-Resume.pdf',
+  resumePath: '/Prashanth-Velu-V-Resume.pdf',
   year: 2026,
   /** Site credit shown in the footer. */
   developer: { name: 'Kishore Kumar', url: 'https://kishore37sk.github.io/personal_website/' },

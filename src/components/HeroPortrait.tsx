@@ -86,7 +86,7 @@ export function HeroPortrait() {
           />
           <img
             src="/profile.jpg"
-            alt="Prashanth Veluv, Digital Marketing and Business Analytics professional"
+            alt="Prashanth Velu V, Digital Marketing and Business Analytics professional"
             width={800}
             height={800}
             fetchPriority="high"

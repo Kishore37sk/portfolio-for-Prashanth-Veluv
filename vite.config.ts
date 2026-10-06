@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
 /** Fallback used until VITE_SITE_URL is set to the real production domain. */
-const DEFAULT_SITE_URL = 'https://prashanth-veluv.vercel.app'
+const DEFAULT_SITE_URL = 'https://prashanth-velu-v.vercel.app'
 
 /**
  * Injects the canonical site URL into index.html (`__SITE_URL__` placeholders)

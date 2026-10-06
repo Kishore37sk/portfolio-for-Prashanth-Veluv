@@ -1,9 +1,9 @@
 {
-  "name": "prashanth-veluv-portfolio",
+  "name": "prashanth-velu-v-portfolio",
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Personal portfolio of Prashanth Veluv — Digital Marketing & Business Analytics professional.",
+  "description": "Personal portfolio of Prashanth Velu V — Digital Marketing & Business Analytics professional.",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
