@@ -1,0 +1,345 @@
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------------
+   Design tokens — monochrome palette derived from the printed resume.
+   text-muted (#858585 -> #636361) and text-faint were darkened for WCAG AA.
+------------------------------------------------------------------- */
+:root {
+  --background: #f3f3f1;
+  --surface: #ffffff;
+  --surface-muted: #e7e7e4;
+  --sidebar: #cfcfcd;
+  --text-primary: #222222;
+  --text-secondary: #555555;
+  --text-muted: #636361;
+  --text-faint: #7d7d7b; /* large display text only (≥ 3:1) */
+  --border: #999999;
+  --hairline: rgb(34 34 34 / 0.16);
+  --hairline-strong: rgb(34 34 34 / 0.38);
+  --accent: #333333;
+  --accent-light: #d8d8d6;
+  --white: #ffffff;
+
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --gutter: clamp(1.25rem, 5vw, 5rem);
+  --container: 1440px;
+  --header-h: 72px;
+}
+
+@theme inline {
+  --color-bg: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-sidebar: var(--sidebar);
+  --color-ink: var(--text-primary);
+  --color-ink-2: var(--text-secondary);
+  --color-ink-3: var(--text-muted);
+  --color-ink-4: var(--text-faint);
+  --color-line: var(--hairline);
+  --color-line-strong: var(--hairline-strong);
+  --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
+
+  --font-display: 'Playfair Display Variable', 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Inter Variable', Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --ease-editorial: var(--ease-out-quint);
+}
+
+/* ---------------------------------------------------------------- base */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--header-h);
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    background: var(--background);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'ss01', 'cv11';
+  }
+  ::selection {
+    background: var(--text-primary);
+    color: var(--background);
+  }
+  :focus-visible {
+    outline: 2px solid var(--text-primary);
+    outline-offset: 3px;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  h1, h2, h3, h4 {
+    text-wrap: balance;
+  }
+}
+
+/*
+ * Full-bleed split layouts (the hero): the content column still lines up
+ * with .container-x. Needs an ancestor with `container-type: inline-size`
+ * spanning the page, so 100cqw excludes the scrollbar.
+ */
+@utility pl-container {
+  padding-left: max(var(--gutter), calc((100cqw - var(--container)) / 2 + var(--gutter)));
+}
+
+/* ----------------------------------------------------------- utilities */
+@layer components {
+  .container-x {
+    width: 100%;
+    max-width: var(--container);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+
+
+  /* Small uppercase metadata label — the resume's "CONTACT / SKILLS" voice. */
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+
+  .display {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 0.95;
+    font-variant-numeric: lining-nums;
+  }
+
+  .section-pad {
+    padding-block: clamp(5rem, 11vw, 10rem);
+  }
+
+  /* Editorial link: underline drawn from left on hover/focus. */
+  .link-line {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6em;
+  }
+  .link-line::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -4px;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.6s var(--ease-out-quint);
+  }
+  .link-line:hover::after,
+  .link-line:focus-visible::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  /* Rectangular buttons — square corners, hairline borders, no shadows. */
+  .btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    min-height: 3rem;
+    padding: 0.85rem 1.5rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    border: 1px solid var(--text-primary);
+    overflow: hidden;
+    isolation: isolate;
+    transition: color 0.5s var(--ease-out-quint);
+  }
+  .btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.5s var(--ease-out-quint);
+  }
+  .btn:hover::before,
+  .btn:focus-visible::before {
+    transform: scaleY(1);
+  }
+  .btn .btn-icon {
+    transition: transform 0.5s var(--ease-out-quint);
+  }
+  .btn:hover .btn-icon-x,
+  .btn:focus-visible .btn-icon-x {
+    transform: translateX(4px);
+  }
+  .btn:hover .btn-icon-y,
+  .btn:focus-visible .btn-icon-y {
+    transform: translateY(3px);
+  }
+
+  .btn-solid {
+    background: var(--text-primary);
+    color: var(--background);
+  }
+  .btn-solid::before {
+    background: var(--background);
+  }
+  .btn-solid:hover,
+  .btn-solid:focus-visible {
+    color: var(--text-primary);
+  }
+
+  .btn-ghost {
+    color: var(--text-primary);
+  }
+  .btn-ghost::before {
+    background: var(--text-primary);
+  }
+  .btn-ghost:hover,
+  .btn-ghost:focus-visible {
+    color: var(--background);
+  }
+
+  /* Inverted variants for the dark contact section. */
+  .btn-invert {
+    border-color: var(--background);
+    background: var(--background);
+    color: var(--text-primary);
+  }
+  .btn-invert::before {
+    background: var(--text-primary);
+  }
+  .btn-invert:hover,
+  .btn-invert:focus-visible {
+    color: var(--background);
+  }
+  .btn-invert-ghost {
+    border-color: rgb(243 243 241 / 0.5);
+    color: var(--background);
+  }
+  .btn-invert-ghost::before {
+    background: var(--background);
+  }
+  .btn-invert-ghost:hover,
+  .btn-invert-ghost:focus-visible {
+    color: var(--text-primary);
+  }
+
+  /* Fine grid used behind the hero portrait and project visuals. */
+  .grid-texture {
+    background-image:
+      linear-gradient(to right, var(--hairline) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--hairline) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -100px;
+    z-index: 100;
+    padding: 0.75rem 1rem;
+    background: var(--text-primary);
+    color: var(--background);
+    font-size: 0.875rem;
+  }
+  .skip-link:focus {
+    top: 1rem;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Motion gating. `html.motion-ok` is set by an inline script in index.html
+   only when the visitor has not asked for reduced motion.
+------------------------------------------------------------------- */
+
+/* Hero elements wait (invisible) for the load timeline; a CSS fallback
+   reveals them if JavaScript never runs. */
+html.motion-ok [data-hero-hide] {
+  visibility: hidden;
+  animation: hero-fallback 0s 3.5s forwards;
+}
+@keyframes hero-fallback {
+  to {
+    visibility: visible;
+  }
+}
+
+/* Timeline markers: full dot by default, compact until active when animated. */
+html.motion-ok .tl-item:not(.is-active) .tl-marker-dot {
+  transform: scale(0.35);
+}
+
+/* Hide the native cursor only while the custom cursor is active. */
+html.has-custom-cursor,
+html.has-custom-cursor * {
+  cursor: none !important;
+}
+
+/* Slow rotation for the hero tick ring. */
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-spin-slow {
+  animation: spin-slow 90s linear infinite;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+.animate-fade-up {
+  animation: fade-up 0.5s var(--ease-out-quint) both;
+}
+
+@keyframes scroll-cue {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  45% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  55% {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
+.animate-scroll-cue {
+  animation: scroll-cue 2.4s var(--ease-out-quint) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

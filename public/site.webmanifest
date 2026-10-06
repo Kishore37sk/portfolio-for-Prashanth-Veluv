@@ -1,0 +1,13 @@
+{
+  "name": "Prashanth Veluv",
+  "short_name": "PV",
+  "description": "Digital Marketing & Business Analytics portfolio of Prashanth Veluv.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#f3f3f1",
+  "theme_color": "#f3f3f1",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}

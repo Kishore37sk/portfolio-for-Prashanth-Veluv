@@ -1,0 +1,14 @@
+node_modules
+dist
+dist-ssr
+*.local
+.env
+.env.*
+!.env.example
+.DS_Store
+*.log
+.vercel
+.netlify
+
+# Local browser-test artifacts
+.playwright-mcp
